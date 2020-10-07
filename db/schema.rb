@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_175042) do
+ActiveRecord::Schema.define(version: 2020_10_07_185035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.bigint "status_id", null: false
+    t.string "title"
+    t.text "content"
+    t.date "date_published"
+    t.date "date_due"
+    t.bigint "teams_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status_id"], name: "index_projects_on_status_id"
+    t.index ["teams_id"], name: "index_projects_on_teams_id"
+  end
 
   create_table "statuses", force: :cascade do |t|
     t.string "name"
@@ -42,4 +63,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_175042) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "projects", "statuses"
+  add_foreign_key "projects", "teams", column: "teams_id"
 end
