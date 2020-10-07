@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Default statuses for Projects
+Status.create(name: "Open")
+Status.create(name: "In Progress")
+Status.create(name: "In Review")
+Status.create(name: "Closed")
