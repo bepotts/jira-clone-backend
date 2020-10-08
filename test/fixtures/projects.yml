@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: one
+  title: MyString
+  content: MyText
+  date_published: 2020-10-07
+  date_duate: 2020-10-07
+  user: one
+
+two:
+  status: two
+  title: MyString
+  content: MyText
+  date_published: 2020-10-07
+  date_duate: 2020-10-07
+  user: two
